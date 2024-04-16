@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  --c-hl: #16a2f2;
+  --c-txt: #1a1818;
+}
+
+@font-face {
+  font-family: "Grotesk";
+  src: url("/src/assets/fonts/NeueHaasDisplayMediu.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grotesk-Bold";
+  src: url("/src/assets/fonts/NeueHaasDisplayBlack.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grotesk-Light";
+  src: url("/src/assets/fonts/NeueHaasDisplayRoman.ttf");
+  font-display: swap;
+}
+
+* {
+  color: var(--c-txt);
+  font-family: "Grotesk";
+}

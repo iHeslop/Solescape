@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  padding: 15px;
+  width: 100%;
+  border-bottom: 1px solid var(--c-txt);
+  background-color: transparent;
+  backdrop-filter: blur(40px);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.title {
+  font-family: "Grotesk-Bold";
+  font-size: 26px;
+}
+
+.link {
+  font-size: 14px;
+  &:hover {
+    color: var(--c-hl);
+  }
+}

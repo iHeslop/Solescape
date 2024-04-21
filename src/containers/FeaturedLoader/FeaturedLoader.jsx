@@ -3,16 +3,27 @@ import SneakerCard from "../../components/SneakerCard/SneakerCard";
 import { getFeaturedSneakers } from "../../services/sneaker-services";
 import styles from "./FeaturedLoader.module.scss";
 import { useNavigate } from "react-router-dom";
+import Message from "../../components/Message/Message";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const FeaturedLoader = () => {
   const navigate = useNavigate();
   const [sneakers, setSneakers] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [error, setError] = useState(null);
+  const [fetchStatus, setFetchStatus] = useState("");
 
   useEffect(() => {
+    setFetchStatus("LOADING");
     getFeaturedSneakers()
-      .then((data) => setSneakers(data))
-      .catch((e) => console.warn(e.message));
+      .then((data) => {
+        setFetchStatus("SUCCESS");
+        setSneakers(data);
+      })
+      .catch((error) => {
+        setFetchStatus("FAILED");
+        setError(error);
+      });
   }, []);
 
   const onClickSneaker = (sneakerId) => {
@@ -32,7 +43,9 @@ const FeaturedLoader = () => {
         <h2 className={styles.title}>FEATURED</h2>
       </section>
       <section className={styles.list}>
-        {sneakers &&
+        {fetchStatus === "LOADING" && <LoadingSpinner />}
+        {fetchStatus === "FAILED" && <Message>...FAILED...</Message>}
+        {fetchStatus === "SUCCESS" &&
           sneakers
             .slice(currentIndex, currentIndex + 8)
             .map((sneaker) => (

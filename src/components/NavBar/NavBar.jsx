@@ -14,7 +14,6 @@ const NavBar = () => {
         <NavLink className={styles.link}>Latest</NavLink>
         <NavLink className={styles.link}>Sneakers</NavLink>
         <NavLink className={styles.link}>Brands</NavLink>
-        <NavLink className={styles.link}>Sale</NavLink>
       </div>
       <div className={styles.list}>
         <NavLink className={styles.link}>Search</NavLink>

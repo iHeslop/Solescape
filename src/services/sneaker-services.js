@@ -42,3 +42,14 @@ export const getSneakerById = async (id) => {
   }
   return { id: snapshot.id, ...snapshot.data() };
 };
+
+export const getSneakersByBrand = async (brand) => {
+  const collectionRef = query(
+    collection(db, "sneakers"),
+    where("brand", "==", brand)
+  );
+  const snapshot = await getDocs(collectionRef);
+  return snapshot.docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+};

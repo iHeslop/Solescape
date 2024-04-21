@@ -1,5 +1,13 @@
+import styles from "./LoadingSpinner.module.scss";
+
 const LoadingSpinner = () => {
-  return <p>...Loading...</p>;
+  return (
+    <>
+      <div className={styles.container}>
+        <h2 className={styles.title}>...LOADING...</h2>
+      </div>
+    </>
+  );
 };
 
 export default LoadingSpinner;

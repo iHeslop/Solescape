@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSneakerById } from "../../services/sneaker-services";
 import ProductPage from "../../pages/ProductPage/ProductPage";
+import Message from "../../components/Message/Message";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const ProductPageLoader = () => {
   const { id } = useParams();
@@ -22,8 +24,8 @@ const ProductPageLoader = () => {
   }, [id]);
   return (
     <>
-      {fetchStatus === "LOADING" && <p>...LOADING...</p>}
-      {fetchStatus === "FAILED" && <p>...FAILED...</p>}
+      {fetchStatus === "LOADING" && <LoadingSpinner />}
+      {fetchStatus === "FAILED" && <Message>...FAILED...</Message>}
       {fetchStatus === "SUCCESS" && <ProductPage sneaker={sneaker} />}
     </>
   );

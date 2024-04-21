@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const ProductPage = ({ sneaker }) => {
   const { addSneakers } = useContext(CartContext);
   const [selectedSize, setSelectedSize] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const cartMessage = document.getElementById("cartMessage");
   const navigate = useNavigate();
 
@@ -29,6 +30,10 @@ const ProductPage = ({ sneaker }) => {
     e.preventDefault();
     navigate("/cart");
   };
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
   return (
     <>
       <div className={styles.container}>
@@ -41,6 +46,7 @@ const ProductPage = ({ sneaker }) => {
               className={styles.image}
               src={sneaker.image ? sneaker.image : placeholder}
               alt="sneaker image"
+              onClick={toggleModal}
             />
           </div>
           <div className={styles.grid}>
@@ -93,6 +99,21 @@ const ProductPage = ({ sneaker }) => {
           </div>
         </div>
       </div>
+      {showModal && (
+        <div className={styles.modal}>
+          <p onClick={toggleModal} className={styles.modal_close}>
+            &#10005;
+          </p>
+          <input type="checkbox" id="zoomCheck" />
+          <label for="zoomCheck">
+            <img
+              className={styles.modal_image}
+              src={sneaker.image ? sneaker.image : placeholder}
+              alt="sneaker image"
+            />
+          </label>
+        </div>
+      )}
     </>
   );
 };

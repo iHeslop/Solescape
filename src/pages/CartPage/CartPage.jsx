@@ -43,7 +43,7 @@ const CartPage = () => {
             />
           ))}
           <div className={styles.total}>
-            <h2 className={styles.total_title}>Total: ${total}</h2>
+            <h2 className={styles.total_title}>Sub-Total: ${total}</h2>
           </div>
         </div>
       )}

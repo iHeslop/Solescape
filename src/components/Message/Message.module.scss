@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  border-right: 1px solid black;
+}
+
+.error {
+  background-color: rgb(252, 100, 100);
+  border: 2px solid red;
+  color: rgb(98, 5, 5);
+  font-size: 30px;
+}
+
+.warning {
+  background-color: rgb(245, 195, 102);
+  border: 2px solid orange;
+  color: rgb(103, 68, 3);
+  font-size: 30px;
+}
+
+.success {
+  background-color: rgb(131, 244, 131);
+  border: 2px solid green;
+  color: rgb(6, 40, 6);
+  font-size: 30px;
+}

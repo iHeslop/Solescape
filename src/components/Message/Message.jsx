@@ -1,10 +1,9 @@
 import styles from "./Message.module.scss";
 
-const Message = ({ severity = "error", message }) => {
-  const classes = `${styles.container} ${styles[severity]}`;
+const Message = () => {
   return (
-    <div className={classes}>
-      <span>{message}</span>
+    <div className={styles.container}>
+      <span>...Failed To Load...</span>
     </div>
   );
 };

@@ -8,6 +8,7 @@ const ProductPage = ({ sneaker }) => {
   const { addSneakers } = useContext(CartContext);
   const [selectedSize, setSelectedSize] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const cartMessage = document.getElementById("cartMessage");
   const navigate = useNavigate();
 
@@ -60,22 +61,37 @@ const ProductPage = ({ sneaker }) => {
               </p>
               <p className={styles.grid_box_colour}>{sneaker.colourway}</p>
               <form className={styles.form} onSubmit={submitForm}>
-                <select
-                  className={styles.select}
-                  onChange={(event) => setSelectedSize(event.target.value)}
+                {sneaker.sizes.length === 0 && (
+                  <select className={styles.select} disabled>
+                    <option>SOLD OUT</option>
+                  </select>
+                )}
+                {sneaker.sizes.length > 0 && (
+                  <select
+                    className={styles.select}
+                    onChange={(event) => setSelectedSize(event.target.value)}
+                  >
+                    {sneaker.sizes
+                      .sort((a, b) => a - b)
+                      .map((size) => (
+                        <option
+                          key={size}
+                          className={styles.select_text}
+                          value={size}
+                        >
+                          US {size}
+                        </option>
+                      ))}
+                  </select>
+                )}
+                <button
+                  className={styles.form_button}
+                  type="submit"
+                  disabled={sneaker.sizes.length === 0}
                 >
-                  {sneaker.sizes.map((size) => (
-                    <option
-                      key={size}
-                      className={styles.select_text}
-                      value={size}
-                    >
-                      US {size}
-                    </option>
-                  ))}
-                </select>
-                <button className={styles.form_button} type="submit">
-                  ADD TO CART | ${sneaker.estimatedMarketValue}
+                  {sneaker.sizes.length === 0
+                    ? "SOLD OUT"
+                    : `ADD TO CART | $${sneaker.estimatedMarketValue}`}
                 </button>
               </form>
               <div className={styles.sizeMessage}>

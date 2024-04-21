@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./SneakerCard.module.scss";
 import placeholder from "../../assets/PLACEHOLDER.webp";
+import { useNavigate } from "react-router-dom";
 
 const SneakerCard = ({ sneaker, onClickSneaker }) => {
   const [isVisible, setIsVisible] = useState(null);
@@ -8,6 +9,11 @@ const SneakerCard = ({ sneaker, onClickSneaker }) => {
   const handleClick = () => {
     setIsVisible(false);
     onClickSneaker(sneaker.id);
+  };
+
+  const navigate = useNavigate();
+  const clickLink = () => {
+    navigate(`/brand/${sneaker.brand}`);
   };
 
   useEffect(() => {
@@ -38,7 +44,7 @@ const SneakerCard = ({ sneaker, onClickSneaker }) => {
       </div>
       <div className={styles.desc}>
         <p
-          onClick={handleClick}
+          onClick={clickLink}
           className={`${styles.link} ${
             isVisible ? styles.visible : styles.hidden
           }`}

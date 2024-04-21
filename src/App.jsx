@@ -5,6 +5,8 @@ import CartPage from "./pages/CartPage/CartPage";
 import ProductPageLoader from "./containers/ProductPageLoader/ProductPageLoader";
 import Footer from "./components/Footer/Footer";
 import CartContextProvider from "./context/CartContextProvider/CartContextProvider";
+import BrandPageLoader from "./containers/BrandPageLoader/BrandPageLoader";
+import LatestPageLoader from "./containers/LatestPageLoader/LatestPageLoader";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/product/:id" element={<ProductPageLoader />} />
+            <Route path="/brand/:id" element={<BrandPageLoader />} />
+            <Route path="/latest" element={<LatestPageLoader />} />
           </Routes>
           <Footer />
         </CartContextProvider>

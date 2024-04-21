@@ -7,7 +7,7 @@ const CartCard = ({ sneaker, removeSneakers }) => {
   const { subtractFromTotal, total } = useContext(CartContext);
   const handleClick = (e) => {
     e.preventDefault();
-    removeSneakers(sneaker);
+    removeSneakers(sneaker, sneaker.selectedSize);
     subtractFromTotal(sneaker.estimatedMarketValue);
   };
 

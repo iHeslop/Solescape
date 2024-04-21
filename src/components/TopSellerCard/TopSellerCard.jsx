@@ -8,6 +8,10 @@ const TopSellerCard = ({ sneaker }) => {
   const onClickSneaker = () => {
     navigate(`/product/${sneaker.id}`);
   };
+
+  const clickLink = () => {
+    navigate(`/brand/${sneaker.brand}`);
+  };
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -18,7 +22,7 @@ const TopSellerCard = ({ sneaker }) => {
         />
       </div>
       <div className={styles.desc}>
-        <p className={styles.link} onClick={onClickSneaker}>
+        <p className={styles.link} onClick={clickLink}>
           {sneaker.brand}
         </p>
         <p className={styles.link_title} onClick={onClickSneaker}>
@@ -31,11 +35,13 @@ const TopSellerCard = ({ sneaker }) => {
           Market Value: ${sneaker.estimatedMarketValue}
         </p>
         <div className={styles.sizes}>
-          {sneaker.sizes.map((size) => (
-            <p key={size} className={styles.text}>
-              {size}
-            </p>
-          ))}
+          {sneaker.sizes
+            .sort((a, b) => a - b)
+            .map((size, index) => (
+              <p key={index} className={styles.text}>
+                {size}
+              </p>
+            ))}
         </div>
       </div>
     </div>

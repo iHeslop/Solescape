@@ -1,0 +1,16 @@
+export const brands = [
+  "ASICS",
+  "Converse",
+  "Crocs",
+  "Hoka One One",
+  "Jordan",
+  "Li-Ning",
+  "New Balance",
+  "Nike",
+  "ON",
+  "Puma",
+  "Reebok",
+  "Saucony",
+  "Under Armour",
+  "adidas",
+];

@@ -1,4 +1,8 @@
 import { createContext, useState } from "react";
+import {
+  removeSneakerSize,
+  addSneakerSize,
+} from "../../services/sneaker-services";
 
 export const CartContext = createContext(null);
 
@@ -11,12 +15,14 @@ const CartContextProvider = ({ children }) => {
     let newCart = cartCount;
     setCartCount(newCart + 1);
     updateSneakers([...sneakers, { ...sneaker, selectedSize: size }]);
+    removeSneakerSize(sneaker.id, size);
   };
 
-  const removeSneakers = (sneaker) => {
+  const removeSneakers = (sneaker, size) => {
     let newCart = cartCount;
     setCartCount(newCart - 1);
     updateSneakers(sneakers.filter((a) => a.id !== sneaker.id));
+    addSneakerSize(sneaker.id, size);
   };
 
   const addToTotal = (price) => {

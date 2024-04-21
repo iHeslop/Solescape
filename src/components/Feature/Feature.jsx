@@ -11,7 +11,9 @@ const Feature = () => {
           <p className={styles.title}>LATEST</p>
           <div className={styles.grid_box}>
             <h2 className={styles.grid_box_title}>Jordan</h2>
-            <NavLink className={styles.link}>Shop Now</NavLink>
+            <NavLink to="/brand/Jordan" className={styles.link}>
+              Shop Now
+            </NavLink>
           </div>
         </div>
         <div className={styles.grid_imageBox}>
@@ -23,7 +25,9 @@ const Feature = () => {
           <p className={styles.title}>LATEST</p>
           <div className={styles.grid_box}>
             <h2 className={styles.grid_box_title}>NIKE</h2>
-            <NavLink className={styles.link}>Shop Now</NavLink>
+            <NavLink to="/brand/Nike" className={styles.link}>
+              Shop Now
+            </NavLink>
           </div>
         </div>
         <div className={styles.grid_imageBox}>

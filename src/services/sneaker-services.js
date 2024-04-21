@@ -7,6 +7,9 @@ import {
   orderBy,
   getDoc,
   doc,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,
 } from "firebase/firestore";
 import { db } from "../config/firestore";
 
@@ -51,5 +54,29 @@ export const getSneakersByBrand = async (brand) => {
   const snapshot = await getDocs(collectionRef);
   return snapshot.docs.map((doc) => {
     return { id: doc.id, ...doc.data() };
+  });
+};
+
+export const getLatestSneakers = async () => {
+  const collectionRef = query(collection(db, "sneakers"));
+  const snapshot = await getDocs(collectionRef);
+  return snapshot.docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+};
+
+export const removeSneakerSize = async (id, size) => {
+  const docRef = doc(db, "sneakers", id);
+  let updatedSize = Number(size);
+  await updateDoc(docRef, {
+    sizes: arrayRemove(updatedSize),
+  });
+};
+
+export const addSneakerSize = async (id, size) => {
+  const docRef = doc(db, "sneakers", id);
+  let updatedSize = Number(size);
+  await updateDoc(docRef, {
+    sizes: arrayUnion(updatedSize),
   });
 };

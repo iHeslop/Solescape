@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid black;
+  &_box {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-right: 1px solid var(--c-txt);
+  &_box {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    gap: 1em;
+    &_title {
+      font-size: 24px;
+      font-family: "Grotesk";
+    }
+    &_colour {
+      font-size: 18px;
+      font-family: "Grotesk";
+    }
+    &_desc {
+      font-size: 15px;
+      font-family: "Grotesk-Light";
+    }
+    &_link {
+      font-size: 15px;
+      font-family: "Grotesk-Light";
+      transition: 0.3s ease-in-out;
+      &:hover {
+        color: var(--c-hl);
+        text-decoration: underline;
+      }
+    }
+  }
+  &_imageBox {
+    width: 50%;
+    border-right: 1px solid var(--c-txt);
+    overflow: hidden;
+  }
+}
+
+.image {
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
+}
+
+.title {
+  font-family: "Grotesk";
+  font-size: 14px;
+  &_box {
+    display: flex;
+    padding: 2%;
+    border-bottom: 1px solid black;
+  }
+}
+
+.select {
+  padding: 1%;
+  &_text {
+    font-size: 14px;
+    font-family: "Grotesk";
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  &_button {
+    color: white;
+    background-color: black;
+    height: 2.3em;
+    font-size: 15px;
+    font-family: "Grotesk-Light";
+    border: 1px solid black;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      background-color: var(--c-hl);
+      border: 1px solid var(--c-hl);
+    }
+  }
+}
+
+.sizeMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+  height: 2em;
+  &_text {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-family: "Grotesk-Bold";
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+  }
+}
+
+.button {
+  &:hover {
+    color: var(--c-hl);
+    cursor: pointer;
+  }
+}

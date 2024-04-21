@@ -1,0 +1,21 @@
+.storeContainer {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.desc {
+  position: absolute;
+  z-index: 1;
+  padding: 1%;
+}
+
+.image {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+}

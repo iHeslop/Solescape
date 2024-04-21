@@ -1,7 +1,10 @@
 import styles from "./NavBar.module.scss";
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../../context/CartContextProvider/CartContextProvider";
+import { useContext } from "react";
 
-const NavBar = ({ cartCount = 0 }) => {
+const NavBar = () => {
+  const { cartCount } = useContext(CartContext);
   return (
     <nav className={styles.container}>
       <div className={styles.list}>

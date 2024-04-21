@@ -1,0 +1,42 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  width: 25%;
+  transition: opacity 1s ease-in-out;
+}
+
+.link {
+  font-size: 11px;
+  transition: 0.3s ease-in-out;
+  font-family: "Grotesk-Bold";
+  &:hover {
+    color: var(--c-hl);
+    cursor: pointer;
+  }
+}
+.text {
+  font-size: 11px;
+}
+
+.desc {
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  gap: 0.3em;
+}
+
+.image {
+  width: 100%;
+  transition: 0.4s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}

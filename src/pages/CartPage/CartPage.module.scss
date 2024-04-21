@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  border-right: 1px solid black;
+  gap: 1.5em;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.button {
+  font-size: 18px;
+  display: flex;
+  background-color: black;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  width: 10em;
+  height: 2em;
+  &_text {
+    color: white;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: var(--c-hl);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  border-right: 1px solid black;
+  &_title {
+    font-family: "Grotesk-Bold";
+    font-size: 28px;
+  }
+}
+
+.main {
+  border-bottom: 1px solid black;
+}
+
+.total {
+  display: flex;
+  justify-content: right;
+  padding-right: 2%;
+  align-items: center;
+  height: 10vh;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  &_title {
+    font-family: "Grotesk";
+    font-size: 20px;
+  }
+}

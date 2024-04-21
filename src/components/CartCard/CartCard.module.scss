@@ -1,0 +1,50 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  width: 100%;
+  transition: opacity 1s ease-in-out;
+}
+
+.link {
+  font-size: 14px;
+  transition: 0.3s ease-in-out;
+  font-family: "Grotesk-Bold";
+}
+
+.title {
+  font-family: "Grotesk";
+  font-size: 28px;
+}
+.text {
+  font-size: 14px;
+}
+
+.desc {
+  border-left: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3%;
+  gap: 0.5em;
+}
+
+.imageContainer {
+  width: 25%;
+}
+
+.image {
+  width: 90%;
+  padding-left: 10%;
+}
+
+.button {
+  font-size: 14px;
+  color: var(--c-hl);
+  transition: 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    text-decoration: line-through;
+  }
+}

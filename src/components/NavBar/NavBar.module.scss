@@ -1,12 +1,15 @@
 .container {
   display: flex;
-  position: fixed;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   padding: 15px;
   width: 100%;
   border-bottom: 1px solid var(--c-txt);
+  border-right: 1px solid black;
   background-color: transparent;
   backdrop-filter: blur(40px);
+  z-index: 10;
 }
 
 .list {
@@ -22,6 +25,7 @@
 
 .link {
   font-size: 14px;
+  transition: 0.3s ease-in-out;
   &:hover {
     color: var(--c-hl);
   }

@@ -1,0 +1,49 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  width: calc(100% / 3);
+}
+
+.link {
+  font-size: 11px;
+  transition: 0.3s ease-in-out;
+  font-family: "Grotesk-Bold";
+  &_title {
+    transition: 0.3s ease-in-out;
+    font-family: "Grotesk-Bold";
+    &:hover {
+      color: var(--c-hl);
+      cursor: pointer;
+    }
+  }
+  &:hover {
+    color: var(--c-hl);
+    cursor: pointer;
+  }
+}
+.text {
+  font-size: 11px;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  gap: 1em;
+}
+
+.image {
+  width: 90%;
+  transition: 0.4s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+
+.sizes {
+  display: flex;
+  gap: 1%;
+}

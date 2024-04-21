@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import CartContextProvider from "./context/CartContextProvider/CartContextProvider";
 import BrandPageLoader from "./containers/BrandPageLoader/BrandPageLoader";
 import LatestPageLoader from "./containers/LatestPageLoader/LatestPageLoader";
+import SearchPageLoader from "./containers/SearchPageLoader/SearchPageLoader";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/product/:id" element={<ProductPageLoader />} />
             <Route path="/brand/:id" element={<BrandPageLoader />} />
             <Route path="/latest" element={<LatestPageLoader />} />
+            <Route path="/search/:id" element={<SearchPageLoader />} />
           </Routes>
           <Footer />
         </CartContextProvider>

@@ -4,14 +4,20 @@ import { CartContext } from "../../context/CartContextProvider/CartContextProvid
 import { useContext, useState } from "react";
 import { brands } from "../../data/brands";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const { cartCount } = useContext(CartContext);
   const [showSubMenu, setShowSubMenu] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const handleClick = () => {
     setShowSubMenu(!showSubMenu);
+  };
+
+  const handleSearchClick = () => {
+    setShowSearch(!showSearch);
   };
 
   const clickLink = (brand) => {
@@ -23,9 +29,6 @@ const NavBar = () => {
     <div className={styles.main}>
       <nav className={styles.container}>
         <div className={styles.list}>
-          <NavLink to="/" className={styles.title}>
-            SOLESCAPE
-          </NavLink>
           <NavLink to="/latest" className={styles.link}>
             Latest
           </NavLink>
@@ -33,8 +36,13 @@ const NavBar = () => {
             Brands
           </p>
         </div>
+        <NavLink to="/" className={styles.title}>
+          SOLESCAPE
+        </NavLink>
         <div className={styles.list}>
-          <NavLink className={styles.link}>Search</NavLink>
+          <p className={styles.link} onClick={handleSearchClick}>
+            Search
+          </p>
           <NavLink to="/cart" className={styles.link}>
             Cart({cartCount})
           </NavLink>
@@ -52,6 +60,12 @@ const NavBar = () => {
             </p>
           ))}
         </nav>
+      )}
+      {showSearch && (
+        <SearchBar
+          handleSearchClick={handleSearchClick}
+          setShowSearch={setShowSearch}
+        />
       )}
     </div>
   );

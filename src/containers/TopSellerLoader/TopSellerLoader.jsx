@@ -7,7 +7,6 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const TopSellerLoader = () => {
   const [sneakers, setSneakers] = useState(null);
-
   const [error, setError] = useState(null);
   const [fetchStatus, setFetchStatus] = useState("");
   useEffect(() => {

@@ -80,3 +80,25 @@ export const addSneakerSize = async (id, size) => {
     sizes: arrayUnion(updatedSize),
   });
 };
+
+export const getSneakersBySearchTerm = async (searchTerm) => {
+  const collectionRef = collection(db, "sneakers");
+  const snapshot = await getDocs(collectionRef);
+
+  const filteredSneakers = snapshot.docs.filter((doc) => {
+    const data = doc.data();
+    const nameContainsTerm = data.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const brandContainsTerm = data.brand
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return nameContainsTerm || brandContainsTerm;
+  });
+
+  const sneakers = filteredSneakers.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return sneakers;
+};

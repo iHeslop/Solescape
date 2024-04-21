@@ -1,54 +1,31 @@
 # Solescape
 
-# React e-cShop Website
+## Description:
 
-## Outline
+Solescape is a fully comprehensive online sneaker store, with the ability to search for sneakers, browse through your favourite brands and add and remove items from your virtual cart. This project makes use of ReactJS and Firebase to create an efficient, aesthetic and streamlined eShop.
 
-This project is designed to reinforce your React learnings and make sure that you are comfortable with most aspect of the framework.
-With this project you will practice how to:
+## Features:
 
-- Fetch Data within a React App
-- Use react-router-dom
-- Use Firebase/Firestore
+- **Search Functionality:** Ability to search through database by a specific search term.
+- **Featured Carousal:** Home page contains a continuously rotating carousal of the current featured products within the Solescape database.
+- **Detailed Information:** Each sneaker has its own product page, which contains detailed information about the product, as well as a modal to zoom in and inspect each sneakers design an aesthetic closer.
+- **Cart System:** Solescape uses a simple cart system to collect and store your cart during your browsing session. You can add or remove a sneaker from your cart(of your chosen size of course) and this is reflected in realtime through database updates, as the sneaker size will be removed from the database as well. If an item isnt in stock, it wont be available to be added to your cart.
+- **Search by Brand:** Have a favourite brand of sneaker? Solescape implements a brand search system to find the latest sneakers from your favourite brands.
+- **Design and Aesthetic:** Solescape is design aesthetic is all based around minimalist street culture, creating an efficient and seamless looking eShop.
 
-## MVP
+## Technologies:
 
-At a minimum your e-shop website should have two pages:
+- **React**
+- **JavaScript**
+- **SCSS**
+- **Firebase**
 
-- Home Page
-  - This will contain:
-    - A Grid of products
-    - Carousel of featured products
-    - Product Page (with id parameter) Similar to a product page on another site, allows you to add to cart and select product variants
-- All products should be stored in Firestore:
-  - You should store the following information:
-    - quantity
-    - variants (could be colors, sizes, etc)
-    - price per unit
-    - name
-    - image url
-    - favourited or not (boolean)
-      All data should be stored in Firestore and fetched by the frontend, there should be NO static product data in the react application
+### Potential Future Additions:
 
-### Bonus
+- Test Stripe integration
+- User login and signup with database intergration
+- Mobile Responsive Design
 
-Using Firestore and react create, a cart system. Create a cart page in your react app Add logic to prevent users from adding items to cart that are no longer in stock. You will have to check the current cart and the product quantity Cart page should have the following:
+### Deployed Link:
 
-- List of products in cart
-
-  - Ability to change quantity of products in cart
-  - Ability to remove items from cart
-
-### Bonus extra bonus
-
-- Try and add Stripe integration to "pay" for the items in the cart (TEST MODE)
-  - 4242 4242 4242 4242
-- TIPS :
-
-1. Make sure your site is scoped to one category of products
-
-## Useful links
-
-- [React-router-dom](https://reactrouter.com/docs/en/v6/getting-started/overview)
-- [Dummy JSON](https://dummyjson.com/)
-- [Fake Store](https://fakestoreapi.com/)
+https://solescape.onrender.com/

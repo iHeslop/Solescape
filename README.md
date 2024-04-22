@@ -23,9 +23,8 @@ Solescape is a fully comprehensive online sneaker store, with the ability to sea
 ### Potential Future Additions:
 
 - Test Stripe integration
-- User login and signup with database intergration
+- User login and signup with database intergration (as opposed to using context for cart)
 - Mobile Responsive Design
-- Add more sneakers and source images for missing images
 
 ### Deployed Link:
 

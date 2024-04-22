@@ -1,16 +1,27 @@
 import styles from "./NavBar.module.scss";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../context/CartContextProvider/CartContextProvider";
-import { useContext, useState } from "react";
-import { brands } from "../../data/brands";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import { getBrandNames } from "../../services/sneaker-services";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const { cartCount } = useContext(CartContext);
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [brands, setBrands] = useState(null);
+
+  useEffect(() => {
+    getBrandNames()
+      .then((data) => {
+        setBrands(data);
+      })
+      .catch((error) => {
+        console.warn(error.message);
+      });
+  }, []);
 
   const handleClick = () => {
     setShowSubMenu(!showSubMenu);

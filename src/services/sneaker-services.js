@@ -102,3 +102,13 @@ export const getSneakersBySearchTerm = async (searchTerm) => {
   }));
   return sneakers;
 };
+
+export const getBrandNames = async () => {
+  const collectionRef = collection(db, "sneakers");
+  const snapshot = await getDocs(collectionRef);
+  const brandNames = snapshot.docs.map((doc) => {
+    return doc.data().brand;
+  });
+  const uniqueBrandNames = Array.from(new Set(brandNames));
+  return uniqueBrandNames;
+};

@@ -35,7 +35,7 @@ const TopSellerCard = ({ sneaker }) => {
           Market Value: ${sneaker.estimatedMarketValue}
         </p>
         <div className={styles.sizes}>
-          {sneaker.sizes
+          {Object.keys(sneaker.sizes)
             .sort((a, b) => a - b)
             .map((size, index) => (
               <p key={index} className={styles.text}>

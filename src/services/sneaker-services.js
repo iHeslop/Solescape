@@ -8,8 +8,6 @@ import {
   getDoc,
   doc,
   updateDoc,
-  arrayRemove,
-  arrayUnion,
 } from "firebase/firestore";
 import { db } from "../config/firestore";
 
@@ -66,19 +64,25 @@ export const getLatestSneakers = async () => {
 };
 
 export const removeSneakerSize = async (id, size) => {
-  const docRef = doc(db, "sneakers", id);
   let updatedSize = Number(size);
-  await updateDoc(docRef, {
-    sizes: arrayRemove(updatedSize),
-  });
+  const docRef = doc(db, "sneakers", id);
+  const docSnapshot = await getDoc(docRef);
+  const data = docSnapshot.data();
+
+  const updatedQuantity = data.sizes[updatedSize] - 1;
+  const updatedSizes = { ...data.sizes, [updatedSize]: updatedQuantity };
+  await updateDoc(docRef, { sizes: updatedSizes });
 };
 
 export const addSneakerSize = async (id, size) => {
-  const docRef = doc(db, "sneakers", id);
   let updatedSize = Number(size);
-  await updateDoc(docRef, {
-    sizes: arrayUnion(updatedSize),
-  });
+  const docRef = doc(db, "sneakers", id);
+  const docSnapshot = await getDoc(docRef);
+  const data = docSnapshot.data();
+
+  const updatedQuantity = data.sizes[updatedSize] + 1;
+  const updatedSizes = { ...data.sizes, [updatedSize]: updatedQuantity };
+  await updateDoc(docRef, { sizes: updatedSizes });
 };
 
 export const getSneakersBySearchTerm = async (searchTerm) => {

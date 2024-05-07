@@ -26,7 +26,6 @@ const ProductPage = ({ sneaker }) => {
       }, 300);
     }, 5000);
   };
-
   const handleClick = (e) => {
     e.preventDefault();
     navigate("/cart");
@@ -61,19 +60,19 @@ const ProductPage = ({ sneaker }) => {
               </p>
               <p className={styles.grid_box_colour}>{sneaker.colourway}</p>
               <form className={styles.form} onSubmit={submitForm}>
-                {sneaker.sizes.length === 0 && (
+                {Object.values(sneaker.sizes).every((value) => value === 0) ? (
                   <select className={styles.select} disabled>
                     <option>SOLD OUT</option>
                   </select>
-                )}
-                {sneaker.sizes.length > 0 && (
+                ) : (
                   <select
                     className={styles.select}
                     onChange={(event) => setSelectedSize(event.target.value)}
                   >
-                    {sneaker.sizes
-                      .sort((a, b) => a - b)
-                      .map((size) => (
+                    {Object.entries(sneaker.sizes)
+                      .filter(([size, quantity]) => quantity !== 0)
+                      .sort((a, b) => parseFloat(a[0]) - parseFloat(b[0]))
+                      .map(([size]) => (
                         <option
                           key={size}
                           className={styles.select_text}
@@ -87,9 +86,11 @@ const ProductPage = ({ sneaker }) => {
                 <button
                   className={styles.form_button}
                   type="submit"
-                  disabled={sneaker.sizes.length === 0}
+                  disabled={Object.values(sneaker.sizes).every(
+                    (value) => value === 0
+                  )}
                 >
-                  {sneaker.sizes.length === 0
+                  {Object.values(sneaker.sizes).every((value) => value === 0)
                     ? "SOLD OUT"
                     : `ADD TO CART | $${sneaker.estimatedMarketValue}`}
                 </button>

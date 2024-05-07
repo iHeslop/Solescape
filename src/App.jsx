@@ -8,6 +8,8 @@ import CartContextProvider from "./context/CartContextProvider/CartContextProvid
 import BrandPageLoader from "./containers/BrandPageLoader/BrandPageLoader";
 import LatestPageLoader from "./containers/LatestPageLoader/LatestPageLoader";
 import SearchPageLoader from "./containers/SearchPageLoader/SearchPageLoader";
+import { useEffect } from "react";
+import { updateSneakers } from "./services/sneakerscripts";
 
 function App() {
   return (

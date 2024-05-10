@@ -27,7 +27,7 @@ export const getTopSellers = async () => {
     collection(db, "sneakers"),
     where("estimatedMarketValue", "<", 1600),
     orderBy("estimatedMarketValue", "desc"),
-    limit(3)
+    limit(6)
   );
   const snapshot = await getDocs(collectionRef);
   return snapshot.docs.map((doc) => {

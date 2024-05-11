@@ -24,7 +24,7 @@ const SearchPageLoader = () => {
   return (
     <>
       {fetchStatus === "LOADING" && <LoadingSpinner />}
-      {fetchStatus === "FAILED" && <Message>...FAILED...</Message>}
+      {fetchStatus === "FAILED" && <Message />}
       {fetchStatus === "SUCCESS" && <SearchPage sneakers={sneakers} />}
     </>
   );

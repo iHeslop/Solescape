@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContextProvider/CartContextProvider";
 import CartCard from "../../components/CartCard/CartCard";
 import styles from "./CartPage.module.scss";
@@ -6,17 +6,22 @@ import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const navigate = useNavigate();
-  const { sneakers, removeSneakers, total, addToTotal } =
-    useContext(CartContext);
+  const { sneakers, removeSneakers, total, setTotal } = useContext(CartContext);
+  const [totalCalculated, setTotalCalculated] = useState(false);
+
   const handleClick = (e) => {
     e.preventDefault();
     navigate("/");
   };
   useEffect(() => {
+    setTotalCalculated(false);
+    let subTotal = 0;
     sneakers.forEach((sneaker) => {
-      addToTotal(sneaker.estimatedMarketValue);
+      subTotal += sneaker.estimatedMarketValue * sneaker.quantity;
     });
-  }, []);
+    setTotal(subTotal);
+    setTotalCalculated(true);
+  }, [sneakers]);
 
   return (
     <div className={styles.main}>
@@ -37,14 +42,16 @@ const CartPage = () => {
           </div>
           {sneakers.map((sneaker) => (
             <CartCard
-              key={sneaker.id}
+              key={sneaker.itemId}
               sneaker={sneaker}
               removeSneakers={removeSneakers}
             />
           ))}
-          <div className={styles.total}>
-            <h2 className={styles.total_title}>Sub-Total: ${total}</h2>
-          </div>
+          {totalCalculated && (
+            <div className={styles.total}>
+              <h2 className={styles.total_title}>Sub-Total: ${total}</h2>
+            </div>
+          )}
         </div>
       )}
     </div>

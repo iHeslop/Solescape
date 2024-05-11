@@ -75,12 +75,18 @@ const TopSellerLoader = () => {
           ))}
         </div>
         <div className={styles.arrows}>
-          <p className={styles.arrows_btn} onClick={() => handleClick("prev")}>
+          <div
+            className={styles.arrows_btn}
+            onClick={() => handleClick("prev")}
+          >
             &lt;
-          </p>
-          <p className={styles.arrows_btn} onClick={() => handleClick("next")}>
+          </div>
+          <div
+            className={styles.arrows_btn}
+            onClick={() => handleClick("next")}
+          >
             &gt;
-          </p>
+          </div>
         </div>
       </section>
       <section className={styles.list}>

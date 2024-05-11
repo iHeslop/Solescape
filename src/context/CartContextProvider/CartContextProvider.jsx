@@ -12,27 +12,41 @@ const CartContextProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
 
   const addSneakers = (sneaker, size) => {
-    let newCart = cartCount;
-    setCartCount(newCart + 1);
-    updateSneakers([...sneakers, { ...sneaker, selectedSize: size }]);
+    const itemId = `${sneaker.id}-${size}`;
+    const existingSneakerIndex = sneakers.findIndex(
+      (item) => item.itemId === itemId
+    );
+    if (existingSneakerIndex !== -1) {
+      const updatedSneakers = [...sneakers];
+      updatedSneakers[existingSneakerIndex].quantity += 1;
+      updateSneakers(updatedSneakers);
+    } else {
+      const updatedSneaker = {
+        ...sneaker,
+        selectedSize: size,
+        quantity: 1,
+        itemId: itemId,
+      };
+      updateSneakers([...sneakers, updatedSneaker]);
+    }
+    setCartCount(cartCount + 1);
     removeSneakerSize(sneaker.id, size);
   };
 
   const removeSneakers = (sneaker, size) => {
-    let newCart = cartCount;
-    setCartCount(newCart - 1);
-    updateSneakers(sneakers.filter((a) => a.id !== sneaker.id));
+    const itemId = `${sneaker.id}-${size}`;
+    const existingSneakerIndex = sneakers.findIndex(
+      (item) => item.itemId === itemId
+    );
+    const updatedSneakers = [...sneakers];
+    if (updatedSneakers[existingSneakerIndex].quantity > 1) {
+      updatedSneakers[existingSneakerIndex].quantity -= 1;
+      updateSneakers(updatedSneakers);
+    } else {
+      updateSneakers(sneakers.filter((a) => a.itemId !== sneaker.itemId));
+    }
+    setCartCount(cartCount - 1);
     addSneakerSize(sneaker.id, size);
-  };
-
-  const addToTotal = (price) => {
-    let subTotal = total;
-    setTotal(subTotal + price);
-  };
-
-  const subtractFromTotal = (price) => {
-    let subTotal = total;
-    setTotal(subTotal - price);
   };
 
   const providedValues = {
@@ -41,8 +55,7 @@ const CartContextProvider = ({ children }) => {
     addSneakers,
     removeSneakers,
     total,
-    addToTotal,
-    subtractFromTotal,
+    setTotal,
   };
   return (
     <CartContext.Provider value={providedValues}>

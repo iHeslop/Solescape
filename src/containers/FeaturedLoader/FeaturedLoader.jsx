@@ -44,7 +44,7 @@ const FeaturedLoader = () => {
       </section>
       <section className={styles.list}>
         {fetchStatus === "LOADING" && <LoadingSpinner />}
-        {fetchStatus === "FAILED" && <Message>...FAILED...</Message>}
+        {fetchStatus === "FAILED" && <Message />}
         {fetchStatus === "SUCCESS" &&
           sneakers
             .slice(currentIndex, currentIndex + 8)

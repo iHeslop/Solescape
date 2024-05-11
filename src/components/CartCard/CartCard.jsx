@@ -4,11 +4,9 @@ import placeholder from "../../assets/PLACEHOLDER.webp";
 import { CartContext } from "../../context/CartContextProvider/CartContextProvider";
 
 const CartCard = ({ sneaker, removeSneakers }) => {
-  const { subtractFromTotal, total } = useContext(CartContext);
   const handleClick = (e) => {
     e.preventDefault();
     removeSneakers(sneaker, sneaker.selectedSize);
-    subtractFromTotal(sneaker.estimatedMarketValue);
   };
 
   return (
@@ -25,6 +23,7 @@ const CartCard = ({ sneaker, removeSneakers }) => {
         <p className={styles.text}>{sneaker.brand}</p>
         <p className={styles.link}>US {sneaker.selectedSize}</p>
         <p className={styles.text}>${sneaker.estimatedMarketValue}</p>
+        <p className={styles.text}>Quantity: {sneaker.quantity}</p>
         <p onClick={handleClick} className={styles.button}>
           x Remove x
         </p>

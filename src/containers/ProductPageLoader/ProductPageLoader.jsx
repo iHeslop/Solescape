@@ -25,7 +25,7 @@ const ProductPageLoader = () => {
   return (
     <>
       {fetchStatus === "LOADING" && <LoadingSpinner />}
-      {fetchStatus === "FAILED" && <Message>...FAILED...</Message>}
+      {fetchStatus === "FAILED" && <Message />}
       {fetchStatus === "SUCCESS" && <ProductPage sneaker={sneaker} />}
     </>
   );

@@ -1,6 +1,6 @@
 import styles from "./ProductPage.module.scss";
 import placeholder from "../../assets/PLACEHOLDER.webp";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../context/CartContextProvider/CartContextProvider";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,6 @@ const ProductPage = ({ sneaker }) => {
   const { addSneakers } = useContext(CartContext);
   const [selectedSize, setSelectedSize] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
   const cartMessage = document.getElementById("cartMessage");
   const navigate = useNavigate();
 
@@ -26,6 +25,7 @@ const ProductPage = ({ sneaker }) => {
       }, 300);
     }, 5000);
   };
+
   const handleClick = (e) => {
     e.preventDefault();
     navigate("/cart");
@@ -34,6 +34,7 @@ const ProductPage = ({ sneaker }) => {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+
   return (
     <>
       <div className={styles.container}>
@@ -59,6 +60,7 @@ const ProductPage = ({ sneaker }) => {
                 ${sneaker.estimatedMarketValue}
               </p>
               <p className={styles.grid_box_colour}>{sneaker.colourway}</p>
+
               <form className={styles.form} onSubmit={submitForm}>
                 {Object.values(sneaker.sizes).every((value) => value === 0) ? (
                   <select className={styles.select} disabled>
@@ -70,7 +72,7 @@ const ProductPage = ({ sneaker }) => {
                     onChange={(event) => setSelectedSize(event.target.value)}
                   >
                     {Object.entries(sneaker.sizes)
-                      .filter(([size, quantity]) => quantity !== 0)
+                      .filter(([size, quantity]) => quantity > 0)
                       .sort((a, b) => parseFloat(a[0]) - parseFloat(b[0]))
                       .map(([size]) => (
                         <option
@@ -95,6 +97,7 @@ const ProductPage = ({ sneaker }) => {
                     : `ADD TO CART | $${sneaker.estimatedMarketValue}`}
                 </button>
               </form>
+
               <div className={styles.sizeMessage}>
                 <p id="cartMessage" className={styles.sizeMessage_text}>
                   Size {selectedSize} {sneaker.name} has been added to your cart{" "}
@@ -122,7 +125,7 @@ const ProductPage = ({ sneaker }) => {
             &#10005;
           </p>
           <input type="checkbox" id="zoomCheck" />
-          <label for="zoomCheck">
+          <label htmlFor="zoomCheck">
             <img
               className={styles.modal_image}
               src={sneaker.image ? sneaker.image : placeholder}

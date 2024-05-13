@@ -10,7 +10,7 @@ const Feature = () => {
         <div className={styles.grid}>
           <p className={styles.title}>LATEST</p>
           <div className={styles.grid_box}>
-            <h2 className={styles.grid_box_title}>Jordan</h2>
+            <h2 className={styles.grid_box_title}>JORDAN</h2>
             <NavLink to="/brand/Jordan" className={styles.link}>
               Shop Now
             </NavLink>

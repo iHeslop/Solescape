@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .main {
   display: flex;
   flex-direction: column;
@@ -21,6 +23,9 @@
   display: flex;
   align-items: center;
   gap: 30px;
+  @include queries.small {
+    gap: 10px;
+  }
 }
 
 .title {
@@ -55,4 +60,57 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.image {
+  height: 1.5em;
+  &_menu {
+    height: 2em;
+  }
+}
+
+.menu {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 1);
+  width: 100%;
+  border-right: 1px solid black;
+  opacity: 0;
+  animation: slideInRight 0.8s ease-in-out forwards;
+  transform: translateX(-100%);
+  &_box {
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    height: 62px;
+    border-bottom: 1px solid black;
+  }
+  &_close {
+    font-size: 24px;
+  }
+}
+
+.hide {
+  animation: slideOutLeft 0.8s ease-in-out forwards;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 }

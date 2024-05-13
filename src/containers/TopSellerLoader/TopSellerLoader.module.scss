@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .title {
   font-family: "Grotesk";
   font-size: 16px;
@@ -20,15 +22,25 @@
   border-right: 1px solid black;
   padding-top: 2%;
   padding-bottom: 2%;
+  @include queries.small {
+    padding: 2%;
+  }
 }
 
 .arrows {
   display: flex;
   gap: 1.5em;
   padding-right: 1.8em;
+  @include queries.small {
+    padding-right: 1em;
+    gap: 1em;
+  }
   &_btn {
     font-size: 28px;
     transition: 0.2s ease-in-out;
+    @include queries.small {
+      font-size: 20px;
+    }
     &:hover {
       cursor: pointer;
       transform: scale(1.1);
@@ -40,6 +52,10 @@
   display: flex;
   gap: 1em;
   font-size: 20px;
+  @include queries.small {
+    gap: 0.7em;
+    font-size: 16px;
+  }
 }
 
 .list {

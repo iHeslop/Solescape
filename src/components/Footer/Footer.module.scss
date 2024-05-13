@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -11,6 +13,10 @@
   gap: 50px;
   padding-top: 50px;
   padding-bottom: 50px;
+  @include queries.small {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
   &_title {
     font-size: 100px;
     font-family: "Grotesk-Bold";
@@ -24,11 +30,24 @@
   justify-content: right;
   border-top: 1px solid var(--c-txt);
   padding: 10px;
+  @include queries.small {
+    justify-content: center;
+    gap: 20px;
+  }
+  &_text {
+    @include queries.small {
+      font-size: 12px;
+    }
+  }
 }
 
 .link {
   margin-left: 20px;
   font-size: 14px;
+  @include queries.small {
+    margin-left: 0;
+    font-size: 12px;
+  }
   &:hover {
     color: var(--c-hl);
   }

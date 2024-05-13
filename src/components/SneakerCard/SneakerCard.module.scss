@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .card {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,9 @@
   border-right: 1px solid black;
   width: 25%;
   transition: opacity 1s ease-in-out;
+  @include queries.small {
+    width: 50%;
+  }
 }
 
 .link {

@@ -1,9 +1,14 @@
+@use "../../scss/partials/queries";
+
 .card {
   display: flex;
   flex-direction: column;
   border-top: 1px solid black;
   border-right: 1px solid black;
   width: calc(100% / 3);
+  @include queries.small {
+    width: 100%;
+  }
 }
 
 .link {
@@ -13,6 +18,9 @@
   &_title {
     transition: 0.3s ease-in-out;
     font-family: "Grotesk-Bold";
+    @include queries.small {
+      font-size: 13px;
+    }
     &:hover {
       color: var(--c-hl);
       cursor: pointer;

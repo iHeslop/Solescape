@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .storeContainer {
   display: flex;
   align-items: flex-end;
@@ -11,6 +13,20 @@
   position: absolute;
   z-index: 1;
   padding: 1%;
+  @include queries.small {
+    padding: 3%;
+  }
+}
+
+.info {
+  font-family: "Grotesk-Light";
+  font-size: 14px;
+}
+
+.title {
+  @include queries.small {
+    font-size: 28px;
+  }
 }
 
 .image {
@@ -18,4 +34,18 @@
   height: 100%;
   width: 100%;
   opacity: 0.9;
+  @include queries.small {
+    display: none;
+  }
+}
+
+.verticalImage {
+  display: none;
+  @include queries.small {
+    object-fit: contain;
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+  }
 }

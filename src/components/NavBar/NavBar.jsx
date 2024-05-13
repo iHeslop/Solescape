@@ -4,6 +4,7 @@ import { CartContext } from "../../context/CartContextProvider/CartContextProvid
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import Message from "../Message/Message";
 import { getBrandNames } from "../../services/sneaker-services";
 import cart from "../../assets/cart.png";
 import search from "../../assets/search.png";
@@ -18,13 +19,17 @@ const NavBar = () => {
   const [brands, setBrands] = useState(null);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [fetchStatus, setFetchStatus] = useState("");
 
   useEffect(() => {
+    setFetchStatus("LOADING");
     getBrandNames()
       .then((data) => {
+        setFetchStatus("SUCCESS");
         setBrands(data);
       })
       .catch((error) => {
+        setFetchStatus("FAILED");
         console.warn(error.message);
       });
   }, []);
@@ -46,6 +51,7 @@ const NavBar = () => {
     if (showMobileMenu) {
       setIsTransitioning(true);
       setTimeout(() => {
+        setShowSubMenu(false);
         setShowMobileMenu(false);
         setIsTransitioning(false);
       }, 800);
@@ -112,16 +118,28 @@ const NavBar = () => {
         )}
       </nav>
       {showSubMenu && (
-        <nav className={styles.submenu}>
-          {brands.map((brand) => (
-            <p
-              key={brand}
-              onClick={() => clickLink(brand)}
-              className={styles.link}
-            >
-              {brand}
-            </p>
-          ))}
+        <nav
+          className={`${styles.submenu} ${
+            showMobileMenu ? styles.submenu_mobile : ""
+          } ${showSubMenu ? "" : styles.hide} ${
+            isTransitioning ? styles.hide : ""
+          }`}
+        >
+          {fetchStatus === "FAILED" && (
+            <div>
+              <p>Failed to Load Brands</p>
+            </div>
+          )}
+          {fetchStatus === "SUCCESS" &&
+            brands.map((brand) => (
+              <p
+                key={brand}
+                onClick={() => clickLink(brand)}
+                className={styles.link}
+              >
+                {brand}
+              </p>
+            ))}
         </nav>
       )}
       {showSearch && (

@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -10,6 +12,9 @@
 
 .title {
   font-size: 30px;
+  @include queries.small {
+    font-size: 24px;
+  }
 }
 
 .button {
@@ -21,6 +26,9 @@
   justify-content: center;
   width: 10em;
   height: 2em;
+  @include queries.small {
+    font-size: 16px;
+  }
   &_text {
     color: white;
   }
@@ -41,9 +49,15 @@
   align-items: center;
   height: 10vh;
   border-right: 1px solid black;
+  @include queries.small {
+    height: 6vh;
+  }
   &_title {
     font-family: "Grotesk-Bold";
     font-size: 28px;
+    @include queries.small {
+      font-size: 20px;
+    }
   }
 }
 
@@ -59,8 +73,14 @@
   height: 10vh;
   border-top: 1px solid black;
   border-right: 1px solid black;
+  @include queries.small {
+    height: 6vh;
+  }
   &_title {
     font-family: "Grotesk";
     font-size: 20px;
+    @include queries.small {
+      font-size: 16px;
+    }
   }
 }

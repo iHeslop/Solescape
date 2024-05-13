@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .card {
   display: flex;
   flex-direction: row;
@@ -5,6 +7,9 @@
   border-top: 1px solid black;
   width: 100%;
   transition: opacity 1s ease-in-out;
+  @include queries.small {
+    flex-direction: column;
+  }
 }
 
 .link {
@@ -16,9 +21,15 @@
 .title {
   font-family: "Grotesk";
   font-size: 28px;
+  @include queries.small {
+    font-size: 18px;
+  }
 }
 .text {
   font-size: 14px;
+  @include queries.small {
+    font-size: 13px;
+  }
 }
 
 .desc {
@@ -28,15 +39,26 @@
   justify-content: center;
   padding: 3%;
   gap: 0.5em;
+  @include queries.small {
+    border-left: 0;
+  }
 }
 
 .imageContainer {
   width: 25%;
+  @include queries.small {
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
 }
 
 .image {
   width: 90%;
   padding-left: 10%;
+  @include queries.small {
+    width: 100%;
+    padding-left: 0;
+  }
 }
 
 .button {

@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,9 @@
   &_box {
     display: flex;
     width: 100%;
+    @include queries.small {
+      flex-direction: column;
+    }
   }
 }
 
@@ -14,27 +19,46 @@
   flex-direction: column;
   width: 50%;
   border-right: 1px solid var(--c-txt);
+  @include queries.small {
+    width: 100%;
+  }
   &_box {
     display: flex;
     flex-direction: column;
     padding: 2%;
     gap: 1em;
+    width: 100%;
+    @include queries.small {
+      padding: 4%;
+    }
     &_title {
       font-size: 24px;
       font-family: "Grotesk";
+      @include queries.small {
+        font-size: 18px;
+      }
     }
     &_colour {
       font-size: 18px;
       font-family: "Grotesk";
+      @include queries.small {
+        font-size: 14px;
+      }
     }
     &_desc {
       font-size: 15px;
       font-family: "Grotesk-Light";
+      @include queries.small {
+        font-size: 13px;
+      }
     }
     &_link {
       font-size: 15px;
       font-family: "Grotesk-Light";
       transition: 0.3s ease-in-out;
+      @include queries.small {
+        font-size: 13px;
+      }
       &:hover {
         color: var(--c-hl);
         text-decoration: underline;
@@ -45,6 +69,9 @@
     width: 50%;
     border-right: 1px solid var(--c-txt);
     overflow: hidden;
+    @include queries.small {
+      width: 100%;
+    }
   }
 }
 
@@ -52,6 +79,11 @@
   height: 90%;
   width: 90%;
   object-fit: cover;
+  @include queries.small {
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
   &:hover {
     cursor: crosshair;
   }
@@ -60,15 +92,22 @@
 .title {
   font-family: "Grotesk";
   font-size: 14px;
+  @include queries.small {
+    font-size: 13px;
+  }
   &_box {
     display: flex;
     padding: 2%;
     border-bottom: 1px solid black;
+    @include queries.small {
+      padding: 4%;
+    }
   }
 }
 
 .select {
   padding: 1%;
+  width: 100%;
   &_text {
     font-size: 14px;
     font-family: "Grotesk";
@@ -79,6 +118,7 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
+  width: 100%;
   &_button {
     color: white;
     background-color: black;
@@ -110,6 +150,10 @@
     font-family: "Grotesk-Bold";
     transition: 0.3s ease-in-out;
     opacity: 0;
+    @include queries.small {
+      font-size: 13px;
+      text-align: center;
+    }
   }
 }
 

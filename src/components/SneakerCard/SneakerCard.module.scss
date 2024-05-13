@@ -29,6 +29,8 @@
   border-top: 1px solid black;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   padding: 3%;
   gap: 0.3em;
 }

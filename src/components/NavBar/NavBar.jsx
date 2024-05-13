@@ -66,7 +66,13 @@ const NavBar = () => {
 
   const clickLink = (brand) => {
     setShowSubMenu(false);
+    setShowMobileMenu(false);
     navigate(`/brand/${brand}`);
+  };
+
+  const hideMenu = () => {
+    setShowSubMenu(false);
+    setShowMobileMenu(false);
   };
 
   return (
@@ -83,7 +89,7 @@ const NavBar = () => {
           </div>
         ) : (
           <div className={styles.list}>
-            <NavLink to="/latest" className={styles.link}>
+            <NavLink onClick={hideMenu} to="/latest" className={styles.link}>
               Latest
             </NavLink>
             <p className={styles.link} onClick={handleClick}>
@@ -161,7 +167,7 @@ const NavBar = () => {
             </p>
           </div>
           <div className={styles.menu_box}>
-            <NavLink to="/latest" className={styles.link}>
+            <NavLink onClick={hideMenu} to="/latest" className={styles.link}>
               Latest
             </NavLink>
           </div>

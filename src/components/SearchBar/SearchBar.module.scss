@@ -87,6 +87,9 @@
   display: flex;
   flex-direction: row;
   background-color: white;
+  @include queries.small {
+    flex-wrap: wrap;
+  }
 }
 
 .link {

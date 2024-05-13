@@ -1,3 +1,5 @@
+@use "../../scss/partials/queries";
+
 .modal {
   position: fixed;
   top: 0;
@@ -38,6 +40,10 @@
   padding-left: 1%;
   padding-right: 2%;
   background-color: rgba(255, 255, 255, 0.95);
+  @include queries.small {
+    padding-right: 4%;
+    padding-left: 4%;
+  }
 }
 
 .search {
@@ -61,6 +67,9 @@
     display: flex;
     align-items: center;
     gap: 3em;
+    @include queries.small {
+      gap: 1em;
+    }
   }
   &_close {
     font-size: 16px;
